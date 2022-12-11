@@ -29,7 +29,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="about.html">About Us</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -297,8 +297,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore tempore ea liber
               <p class="cta-text">
                 Lets Work Together!
               </p>
-    
-              <form class="cta-form" name="sign-up" netlify>
+    <div class="cta-form">
+
+              <form onsubmit="sendEmail(); reset(); return false;">
                 <div class="row mt-4 mt-sm-0">
                   <div class="col-md-6">
                     <label for="full-name">Full Name</label>
@@ -322,10 +323,12 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore tempore ea liber
                     </select>
                   </div>
                   <div class="col-md-6 mt-4 mt-sm-0 align-self-end">
-                    <button class="btn-form">Contact now</button>
+                    <button class="btn-form" type="submit">Contact now</button>
                   </div>
                 </div>
               </form>
+    </div>
+
             </div>
           </div>
           <!-- <div class="col-md-4 d-none d-sm-block col-sm-12 pl-3 pr-3 pr-sm-0 pt-0 cta-img pl-sm-0">
@@ -368,5 +371,22 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore tempore ea liber
             </div>
           </div>
         </footer>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail(){
+                Email.send({
+            Host : "smtp.elasticemail.com",
+            Username : "sarwath.maleha@gmail.com",
+            Password : "E9BF74219BBAF80B9017B2D3C0D57752FAA6",
+            To : 'sarwath.maleha@gmail.com',
+            From : document.getElementById("email").value,
+            Subject : "New Contact Form Enquiry",
+            Body : "Name: " + document.getElementById("full-name").value
+            +"<br> Email: " + document.getElementById("email").value
+          }).then(
+          message => alert("Message Sent")
+        );
+            }
+        </script>
 </body>
 </html>
